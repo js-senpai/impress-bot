@@ -106,10 +106,10 @@ export class TelegramAdminWelcomeMessageActionService {
       update: {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        message: { video = {}, video_note = {} },
+        message: { video = {} },
       },
     } = ctx;
-    const { mime_type, file_id, file_size, file_name } = video || video_note;
+    const { mime_type, file_id, file_size, file_name } = video;
     if (file_size > 20 * 1024 * 1024) {
       session.enableUploadingVideo = false;
       return await ErrorFileSizeAction({
