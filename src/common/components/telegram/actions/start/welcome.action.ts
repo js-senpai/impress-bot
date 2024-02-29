@@ -4,6 +4,7 @@ import { ChangeStartTextKeyboardButton } from '../../buttons/keyboard-buttons/ad
 import { ChangeStartVideoKeyboardButton } from '../../buttons/keyboard-buttons/admin/change-start-video.keyboard-button';
 import * as fs from 'fs';
 import { join } from 'path';
+import { delay } from '../../../../utils/common.utils';
 
 export const WelcomeAction = async ({
   ctx,
@@ -21,6 +22,7 @@ export const WelcomeAction = async ({
   i18n: I18nService;
 }): Promise<void> => {
   for (const { fileName } of videos) {
+    await delay(1000);
     await ctx.sendVideoNote({
       source: await fs.promises.readFile(
         join(__dirname, '..', '..', '..', '..', '..', '..', 'videos', fileName),

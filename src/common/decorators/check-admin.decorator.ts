@@ -12,7 +12,10 @@ export const CheckAdminDecorator = () => {
     descriptor.value = async function (data) {
       const { ctx } = data;
       const getId =
-        ctx.update.message.from.id || ctx.update.callback_query.from.id;
+        ctx.update?.message?.from?.id || ctx?.update?.callback_query?.from?.id;
+      if (!getId) {
+        return;
+      }
       const getUser = await prisma.user.findUnique({
         where: {
           telegramId: getId,
