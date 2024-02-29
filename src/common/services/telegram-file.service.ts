@@ -17,6 +17,7 @@ export class TelegramFileService {
     headers: { [key: string]: string };
     file: stream.Readable;
   }> {
+    console.log(await ctx.telegram.getFileLink(fileId));
     const { href } = await ctx.telegram.getFileLink(fileId);
     const getFile = await axios.get(href, {
       responseType: 'stream',
