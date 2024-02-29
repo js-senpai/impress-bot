@@ -84,7 +84,6 @@ export class TelegramUpdate {
     @Ctx() ctx: TelegramContext,
   ): Promise<void> {
     try {
-      console.log(ctx);
       await this.telegramVideoHandlerService.actionHandler({ ctx, message });
     } catch (e) {
       ErrorUnknownAction({
