@@ -36,3 +36,4 @@ lerna-debug.log*
 videos
 .idea
 .env
+telegram-session.storage.json

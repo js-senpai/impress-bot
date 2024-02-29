@@ -5,6 +5,7 @@ import { ChangeStartVideoKeyboardButton } from '../../buttons/keyboard-buttons/a
 import * as fs from 'fs';
 import { join } from 'path';
 import { delay } from '../../../../utils/common.utils';
+import { PickDateLinkInlineButton } from '../../buttons/inline-buttons/user/common/pick-date-link.inline-button';
 
 export const WelcomeAction = async ({
   ctx,
@@ -32,8 +33,8 @@ export const WelcomeAction = async ({
   }
   await ctx.reply(text, {
     parse_mode: 'HTML',
-    ...(isAdmin && {
-      reply_markup: {
+    reply_markup: {
+      ...(isAdmin && {
         resize_keyboard: true,
         keyboard: [
           [
@@ -47,7 +48,13 @@ export const WelcomeAction = async ({
             })),
           ],
         ],
-      },
-    }),
+      }),
+      inline_keyboard: [
+        await PickDateLinkInlineButton({
+          lang,
+          i18n,
+        }),
+      ],
+    },
   });
 };
