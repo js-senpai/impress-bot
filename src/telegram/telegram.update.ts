@@ -78,28 +78,6 @@ export class TelegramUpdate {
     }
   }
 
-  @On('video_note')
-  async onVideoNote(
-    @Message('text') message: string,
-    @Ctx() ctx: TelegramContext,
-  ): Promise<void> {
-    try {
-      await this.telegramVideoHandlerService.actionHandler({ ctx, message });
-    } catch (e) {
-      ErrorUnknownAction({
-        ctx,
-        i18n: this.i18n,
-      });
-      ctx.session.enableWritingText = false;
-      ctx.session.enableUploadingVideo = false;
-      this.logger.error(
-        'Error in onVideoNote method',
-        JSON.stringify(e?.response?.data || e.stack),
-        TelegramUpdate.name,
-      );
-    }
-  }
-
   @On('text')
   async onMessage(
     @Message('text') message: string,

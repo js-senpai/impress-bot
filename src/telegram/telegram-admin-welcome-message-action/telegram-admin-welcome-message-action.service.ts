@@ -110,7 +110,6 @@ export class TelegramAdminWelcomeMessageActionService {
       },
     } = ctx;
     const { mime_type, file_id, file_size, file_name } = video || video_note;
-    console.log(video_note);
     if (file_size > 20 * 1024 * 1024) {
       session.enableUploadingVideo = false;
       return await ErrorFileSizeAction({
