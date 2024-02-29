@@ -5,6 +5,7 @@ export interface TelegramContext extends Scenes.SceneContext, Context {
   session: SceneSession<SceneSessionData> & {
     enableWritingText?: boolean;
     enableUploadingVideo?: boolean;
+    enableMailing?: boolean;
   };
   startPayload?: any;
 }

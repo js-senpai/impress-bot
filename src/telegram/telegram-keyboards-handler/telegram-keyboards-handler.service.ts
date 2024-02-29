@@ -2,12 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { I18nService } from 'nestjs-i18n';
 import { ITelegramBodyWithMessage } from '../../common/interfaces/telegram.interface';
 import { TelegramAdminWelcomeMessageActionService } from '../telegram-admin-welcome-message-action/telegram-admin-welcome-message-action.service';
+import { TelegramMailingActionService } from '../telegram-mailing-action/telegram-mailing-action.service';
 
 @Injectable()
 export class TelegramKeyboardsHandlerService {
   constructor(
     private readonly i18n: I18nService,
     private readonly telegramAdminWelcomeMessageAction: TelegramAdminWelcomeMessageActionService,
+    private readonly telegramMailingAction: TelegramMailingActionService,
   ) {}
 
   async actionHandler({ message, ctx }: ITelegramBodyWithMessage) {
@@ -31,6 +33,15 @@ export class TelegramKeyboardsHandlerService {
         ctx,
         message,
       });
+    }
+    if (session.enableMailing) {
+      return await this.telegramMailingAction.sendMessages({
+        ctx,
+        message,
+      });
+    }
+    if (getKey === 'MAILING') {
+      return await this.telegramMailingAction.enableMailing({ ctx });
     }
     if (getKey === 'CHANGE_START_TEXT') {
       return await this.telegramAdminWelcomeMessageAction.enableWritingText({

@@ -43,6 +43,7 @@ export class TelegramStartHandlerService {
     if (getUser?.isAdmin) {
       session.enableUploadingVideo = false;
       session.enableWritingText = false;
+      session.enableMailing = false;
     }
     if (!getUser) {
       await this.prismaService.user.create({

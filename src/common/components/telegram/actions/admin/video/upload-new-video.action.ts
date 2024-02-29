@@ -1,8 +1,8 @@
 import { I18nService } from 'nestjs-i18n';
-import { CancelKeyboardButton } from '../../buttons/keyboard-buttons/admin/cancel.keyboard-button';
-import { TelegramContext } from '../../../../contexts/telegram.context';
+import { CancelKeyboardButton } from '../../../buttons/keyboard-buttons/admin/common/cancel.keyboard-button';
+import { TelegramContext } from '../../../../../contexts/telegram.context';
 
-export const WriteTextAction = async ({
+export const UploadNewVideoAction = async ({
   ctx,
   lang = 'ua',
   i18n,
@@ -12,7 +12,7 @@ export const WriteTextAction = async ({
   i18n: I18nService;
 }): Promise<void> => {
   await ctx.reply(
-    await i18n.translate('telegram.WRITE_NEW_TEXT', {
+    await i18n.translate('telegram.UPLOAD_NEW_VIDEO', {
       lang,
     }),
     {

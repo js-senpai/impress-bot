@@ -1,7 +1,7 @@
 import { I18nService } from 'nestjs-i18n';
-import { TelegramContext } from '../../../../contexts/telegram.context';
+import { TelegramContext } from '../../../../../contexts/telegram.context';
 import { welcomeVideos } from '@prisma/client';
-import { TelegramActionsEnums } from '../../../../enums/telegram-actions.enums';
+import { TelegramActionsEnums } from '../../../../../enums/telegram-actions.enums';
 
 export const DeleteVideosAction = async ({
   ctx,

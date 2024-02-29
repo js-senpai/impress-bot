@@ -7,12 +7,14 @@ import { TelegramInlineHandlerService } from './telegram-inline-handler/telegram
 import { TelegramKeyboardsHandlerService } from './telegram-keyboards-handler/telegram-keyboards-handler.service';
 import { PrismaService } from '../common/services/prisma.service';
 import { TelegramFileService } from '../common/services/telegram-file.service';
+import { TelegramMailingActionService } from './telegram-mailing-action/telegram-mailing-action.service';
 
 @Module({
   providers: [
     Logger,
     PrismaService,
     TelegramFileService,
+    TelegramMailingActionService,
     TelegramAdminWelcomeMessageActionService,
     TelegramStartHandlerService,
     TelegramInlineHandlerService,

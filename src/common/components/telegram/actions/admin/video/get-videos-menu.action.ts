@@ -1,9 +1,9 @@
 import { I18nService } from 'nestjs-i18n';
-import { TelegramContext } from '../../../../contexts/telegram.context';
-import { ChangeStartTextKeyboardButton } from '../../buttons/keyboard-buttons/admin/change-start-text.keyboard-button';
-import { ChangeStartVideoKeyboardButton } from '../../buttons/keyboard-buttons/admin/change-start-video.keyboard-button';
+import { TelegramContext } from '../../../../../contexts/telegram.context';
+import { UploadNewVideoKeyboardButton } from '../../../buttons/keyboard-buttons/admin/video/upload-new-video.keyboard-button';
+import { DeleteVideosKeyboardButton } from '../../../buttons/keyboard-buttons/admin/video/delete-videos.keyboard-button';
 
-export const MenuAction = async ({
+export const GetVideosMenuAction = async ({
   ctx,
   lang = 'ua',
   i18n,
@@ -22,11 +22,11 @@ export const MenuAction = async ({
         resize_keyboard: true,
         keyboard: [
           [
-            ...(await ChangeStartTextKeyboardButton({
+            ...(await UploadNewVideoKeyboardButton({
               lang,
               i18n,
             })),
-            ...(await ChangeStartVideoKeyboardButton({
+            ...(await DeleteVideosKeyboardButton({
               lang,
               i18n,
             })),

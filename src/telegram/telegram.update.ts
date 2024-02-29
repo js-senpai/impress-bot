@@ -48,6 +48,7 @@ export class TelegramUpdate {
       });
       ctx.session.enableWritingText = false;
       ctx.session.enableUploadingVideo = false;
+      ctx.session.enableMailing = false;
       this.logger.error(
         'Error in callbackQuery',
         JSON.stringify(e?.response?.data || e.stack),
@@ -70,6 +71,7 @@ export class TelegramUpdate {
       });
       ctx.session.enableWritingText = false;
       ctx.session.enableUploadingVideo = false;
+      ctx.session.enableMailing = false;
       this.logger.error(
         'Error in onVideo method',
         JSON.stringify(e?.response?.data || e.stack),
@@ -95,6 +97,7 @@ export class TelegramUpdate {
       });
       ctx.session.enableWritingText = false;
       ctx.session.enableUploadingVideo = false;
+      ctx.session.enableMailing = false;
       this.logger.error(
         'Error in onMessage method',
         JSON.stringify(e?.response?.data || e.stack),

@@ -1,23 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../common/services/prisma.service';
 import { TelegramContext } from '../../common/contexts/telegram.context';
-import { MenuAction } from '../../common/components/telegram/actions/admin/menu.action';
+import { MenuAction } from '../../common/components/telegram/actions/admin/common/menu.action';
 import { I18nService } from 'nestjs-i18n';
 import { CheckAdminDecorator } from '../../common/decorators/check-admin.decorator';
-import { WriteTextAction } from '../../common/components/telegram/actions/admin/write-text.action';
+import { WriteTextAction } from '../../common/components/telegram/actions/admin/text/write-text.action';
 import { ITelegramBodyWithMessage } from '../../common/interfaces/telegram.interface';
 import { SuccessTextChangedAction } from '../../common/components/telegram/actions/success/success-text-changed.action';
-import { UploadNewVideoAction } from '../../common/components/telegram/actions/admin/upload-new-video.action';
+import { UploadNewVideoAction } from '../../common/components/telegram/actions/admin/video/upload-new-video.action';
 import { ErrorFileSizeAction } from '../../common/components/telegram/actions/errors/error-file-size.action';
 import { TelegramFileService } from '../../common/services/telegram-file.service';
 import * as fs from 'fs';
 import { join } from 'path';
 import { nanoid } from 'nanoid';
 import { SuccessVideoUploadedAction } from '../../common/components/telegram/actions/success/success-video-uploaded.action';
-import { DeleteVideosAction } from '../../common/components/telegram/actions/admin/delete-videos.action';
+import { DeleteVideosAction } from '../../common/components/telegram/actions/admin/video/delete-videos.action';
 import { ErrorVideoNotFoundAction } from '../../common/components/telegram/actions/errors/error-video-not-found.action';
 import { SuccessVideoDeletedAction } from '../../common/components/telegram/actions/success/success-video-deleted.action';
-import { GetVideosMenuAction } from '../../common/components/telegram/actions/admin/get-videos-menu.action';
+import { GetVideosMenuAction } from '../../common/components/telegram/actions/admin/video/get-videos-menu.action';
 
 @Injectable()
 export class TelegramAdminWelcomeMessageActionService {
@@ -32,6 +32,7 @@ export class TelegramAdminWelcomeMessageActionService {
     const { session } = ctx;
     session.enableUploadingVideo = false;
     session.enableWritingText = false;
+    session.enableMailing = false;
     return await MenuAction({
       ctx,
       i18n: this.i18n,

@@ -1,11 +1,12 @@
 import { TelegramContext } from '../../../../contexts/telegram.context';
 import { I18nService } from 'nestjs-i18n';
-import { ChangeStartTextKeyboardButton } from '../../buttons/keyboard-buttons/admin/change-start-text.keyboard-button';
-import { ChangeStartVideoKeyboardButton } from '../../buttons/keyboard-buttons/admin/change-start-video.keyboard-button';
+import { ChangeStartTextKeyboardButton } from '../../buttons/keyboard-buttons/admin/text/change-start-text.keyboard-button';
+import { ChangeStartVideoKeyboardButton } from '../../buttons/keyboard-buttons/admin/video/change-start-video.keyboard-button';
 import * as fs from 'fs';
 import { join } from 'path';
 import { delay } from '../../../../utils/common.utils';
 import { PickDateLinkInlineButton } from '../../buttons/inline-buttons/user/common/pick-date-link.inline-button';
+import { SendMailsKeyboardButton } from '../../buttons/keyboard-buttons/admin/mailing/send-mails.keyboard-button';
 
 export const WelcomeAction = async ({
   ctx,
@@ -38,6 +39,10 @@ export const WelcomeAction = async ({
         resize_keyboard: true,
         keyboard: [
           [
+            ...(await SendMailsKeyboardButton({
+              lang,
+              i18n,
+            })),
             ...(await ChangeStartTextKeyboardButton({
               lang,
               i18n,
