@@ -1,0 +1,40 @@
+version: '3.2'
+
+services:
+  impress-bot-db:
+    image: postgres:latest
+    restart: always
+    networks:
+      - impress-network
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@bpr-bot-db:${POSTGRES_PORT}/bot_db?schema=public
+    ports:
+      - '5440:5432'
+    volumes:
+      - impress-bot-db:/var/lib/postgresql/data
+  impress-bot:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    networks:
+      - bpr-network
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@bpr-bot-db:${POSTGRES_PORT}/bot_db?schema=public
+    restart: always
+    ports:
+      - "4000:3000"
+    volumes:
+      - ./logs:/usr/src/app/logs
+      - ./telegram-session.storage.json:/usr/src/app/telegram-session.storage.json
+      - ./videos:/usr/src/app/videos
+    depends_on:
+      - impress-bot-db
+volumes:
+  impress-bot-db:
+networks:
+  impress-network:
+    driver: bridge

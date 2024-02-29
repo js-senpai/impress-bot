@@ -1,0 +1,28 @@
+{
+  "WRITE_NEW_TEXT": "Введіть новий текст",
+  "UPLOAD_NEW_VIDEO": "Завантажте нове відео",
+  "DELETE_VIDEOS": "Віберіть одне відео з списку для видалення",
+  "MENU": "Меню",
+  "ERRORS": {
+    "FILE_SIZE": "Обʼєм файлу повинен бути меньше ніж 20мб",
+    "UNKNOWN": "Невідома помилка \uD83E\uDD72.Спробуйте перезагрузити бота через команду \"/start\"",
+    "NOT_FOUND_VIDEO": "Відео не знайдено"
+  },
+  "SUCCESS": {
+    "VIDEO_DELETED": "Відео успішно видалено",
+    "VIDEO_UPLOADED": "Відео успішно завантажено",
+    "TEXT_CHANGED": "Тест успішно оновлен"
+  },
+  "BUTTONS": {
+    "KEYBOARD_BUTTONS": {
+      "CHANGE_START_TEXT": "Поміняти текст",
+      "CHANGE_START_VIDEO": "Поміняти відео",
+      "CANCEL": "Відміна",
+      "UPLOAD_NEW_VIDEO": "Завантажити нове відео",
+      "DELETE_VIDEOS": "Видалити відео"
+    },
+    "INLINE_BUTTONS": {
+      "PICK_THE_DATE": "Обрати місто та час"
+    }
+  }
+}
