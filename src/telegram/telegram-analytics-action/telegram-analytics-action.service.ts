@@ -63,8 +63,7 @@ export class TelegramAnalyticsActionService {
     ctx: TelegramContext;
   }) {
     const { session } = ctx;
-    const regex =
-      /^\d{2}\.\d{2}\.\d{4} \d{2}:\d{2}-\d{2}\.\d{2}\.\d{4} \d{2}:\d{2}$/;
+    const regex = /^\d{2}\.\d{2}\.\d{4}-\d{2}\.\d{2}\.\d{4}$/;
     if (!regex.test(message)) {
       session.enableChoosingPeriod = false;
       return await ErrorIncorrectPeriodFormatAction({
@@ -78,8 +77,8 @@ export class TelegramAnalyticsActionService {
       where: {
         isAdmin: false,
         createdAt: {
-          gte: dayjs(startTime, 'DD.MM.YYYY HH:mm').toDate(),
-          lt: dayjs(endTime, 'DD.MM.YYYY HH:mm').toDate(),
+          gte: dayjs(startTime, 'DD.MM.YYYY').toDate(),
+          lt: dayjs(endTime, 'DD.MM.YYYY').toDate(),
         },
       },
     });

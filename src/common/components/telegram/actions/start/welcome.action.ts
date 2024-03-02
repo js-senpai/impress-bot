@@ -66,6 +66,8 @@ export const WelcomeAction = async ({
                 lang,
                 i18n,
               })),
+            ],
+            [
               ...(await ChangeStartTextKeyboardButton({
                 lang,
                 i18n,

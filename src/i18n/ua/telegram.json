@@ -4,13 +4,13 @@
   "DELETE_VIDEOS": "Віберіть одне відео з списку для видалення",
   "MENU": "Меню",
   "WRITE_MAIL_MESSAGE": "Введіть текст розсилки нижче \uD83D\uDC47",
-  "SET_ANALYTICS_PERIOD": "Напишіть діапазон дат в форматі <b>DD.MM.YYYY HH:mm-DD.MM.YYYY HH:mm</b>",
+  "SET_ANALYTICS_PERIOD": "Напишіть діапазон дат в форматі <b>DD.MM.YYYY-DD.MM.YYYY</b>",
   "ERRORS": {
     "FILE_SIZE": "Обʼєм файлу повинен бути меньше ніж 20мб",
     "UNKNOWN": "Невідома помилка \uD83E\uDD72.Спробуйте перезагрузити бота через команду \"/start\"",
     "NOT_FOUND_VIDEO": "Відео не знайдено",
     "NOT_FOUND_RESULTS": "Не знайдено результатів",
-    "INCORRECT_PERIOD_FORMAT": "Формат періода повинен бути у вигляді <b>DD.MM.YYYY HH:mm-DD.MM.YYYY HH:mm</b>.Приклад: 12.12.2024 02:00-12.12.2024 03:00"
+    "INCORRECT_PERIOD_FORMAT": "Формат періода повинен бути у вигляді <b>DD.MM.YYYY-DD.MM.YYYY</b>.Приклад: 12.12.2024 02:00-12.12.2024 03:00"
   },
   "SUCCESS": {
     "VIDEO_DELETED": "Відео успішно видалено",
