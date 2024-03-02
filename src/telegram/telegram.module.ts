@@ -8,6 +8,7 @@ import { TelegramKeyboardsHandlerService } from './telegram-keyboards-handler/te
 import { PrismaService } from '../common/services/prisma.service';
 import { TelegramFileService } from '../common/services/telegram-file.service';
 import { TelegramMailingActionService } from './telegram-mailing-action/telegram-mailing-action.service';
+import { TelegramAnalyticsActionService } from './telegram-analytics-action/telegram-analytics-action.service';
 
 @Module({
   providers: [
@@ -22,6 +23,7 @@ import { TelegramMailingActionService } from './telegram-mailing-action/telegram
     TelegramVideoHandlerService,
     TelegramAdminWelcomeMessageActionService,
     TelegramUpdate,
+    TelegramAnalyticsActionService,
   ],
 })
 export class TelegramModule {}

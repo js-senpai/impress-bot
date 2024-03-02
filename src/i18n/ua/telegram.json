@@ -4,25 +4,32 @@
   "DELETE_VIDEOS": "Віберіть одне відео з списку для видалення",
   "MENU": "Меню",
   "WRITE_MAIL_MESSAGE": "Введіть текст розсилки нижче \uD83D\uDC47",
+  "SET_ANALYTICS_PERIOD": "Напишіть діапазон дат в форматі <b>DD.MM.YYYY HH:mm-DD.MM.YYYY HH:mm</b>",
   "ERRORS": {
     "FILE_SIZE": "Обʼєм файлу повинен бути меньше ніж 20мб",
     "UNKNOWN": "Невідома помилка \uD83E\uDD72.Спробуйте перезагрузити бота через команду \"/start\"",
-    "NOT_FOUND_VIDEO": "Відео не знайдено"
+    "NOT_FOUND_VIDEO": "Відео не знайдено",
+    "NOT_FOUND_RESULTS": "Не знайдено результатів",
+    "INCORRECT_PERIOD_FORMAT": "Формат періода повинен бути у вигляді <b>DD.MM.YYYY HH:mm-DD.MM.YYYY HH:mm</b>.Приклад: 12.12.2024 02:00-12.12.2024 03:00"
   },
   "SUCCESS": {
     "VIDEO_DELETED": "Відео успішно видалено",
     "VIDEO_UPLOADED": "Відео успішно завантажено",
     "TEXT_CHANGED": "Тест успішно оновлен",
-    "SENT_MAIL": "Повідомлення успішно надіслані \uD83D\uDC4D"
+    "SENT_MAIL": "Повідомлення успішно надіслані \uD83D\uDC4D",
+    "FOUND_USERS": "Знайдено користувачів: <b>{total}</b>"
   },
   "BUTTONS": {
     "KEYBOARD_BUTTONS": {
       "MAILING": "Розсилка",
-      "CHANGE_START_TEXT": "Поміняти текст",
-      "CHANGE_START_VIDEO": "Поміняти відео",
+      "CHANGE_START_TEXT": "Замінити текст",
+      "CHANGE_START_VIDEO": "Замінити відео",
       "CANCEL": "Відміна",
       "UPLOAD_NEW_VIDEO": "Завантажити нове відео",
-      "DELETE_VIDEOS": "Видалити відео"
+      "DELETE_VIDEOS": "Видалити відео",
+      "ANALYTICS": "Аналітика",
+      "CURRENT_DAY_ANALYTICS": "Сьогодні",
+      "CHOOSE_PERIOD_ANALYTICS": "Обрати період"
     },
     "INLINE_BUTTONS": {
       "PICK_THE_DATE": "Обрати місто та час"

@@ -7,6 +7,7 @@ import { join } from 'path';
 import { delay } from '../../../../utils/common.utils';
 import { PickDateLinkInlineButton } from '../../buttons/inline-buttons/user/common/pick-date-link.inline-button';
 import { SendMailsKeyboardButton } from '../../buttons/keyboard-buttons/admin/mailing/send-mails.keyboard-button';
+import { AnalyticsKeyboardButton } from '../../buttons/keyboard-buttons/admin/analytics/analytics.keyboard-button';
 
 export const WelcomeAction = async ({
   ctx,
@@ -32,34 +33,57 @@ export const WelcomeAction = async ({
       filename: fileName,
     });
   }
-  await ctx.reply(text, {
-    parse_mode: 'HTML',
-    reply_markup: {
-      ...(isAdmin && {
-        resize_keyboard: true,
-        keyboard: [
-          [
-            ...(await SendMailsKeyboardButton({
-              lang,
-              i18n,
-            })),
-            ...(await ChangeStartTextKeyboardButton({
-              lang,
-              i18n,
-            })),
-            ...(await ChangeStartVideoKeyboardButton({
-              lang,
-              i18n,
-            })),
-          ],
-        ],
-      }),
-      inline_keyboard: [
-        await PickDateLinkInlineButton({
-          lang,
-          i18n,
-        }),
-      ],
+  await ctx.sendDocument(
+    {
+      source: await fs.promises.readFile(
+        join(
+          __dirname,
+          '..',
+          '..',
+          '..',
+          '..',
+          '..',
+          '..',
+          'presentations',
+          'presentation.pdf',
+        ),
+      ),
+      filename: 'Як виглядає 3D візуалізація плану лікування?.pdf',
     },
-  });
+    {
+      caption: text,
+      parse_mode: 'HTML',
+      reply_markup: {
+        ...(isAdmin && {
+          resize_keyboard: true,
+          keyboard: [
+            [
+              ...(await AnalyticsKeyboardButton({
+                lang,
+                i18n,
+              })),
+              ...(await SendMailsKeyboardButton({
+                lang,
+                i18n,
+              })),
+              ...(await ChangeStartTextKeyboardButton({
+                lang,
+                i18n,
+              })),
+              ...(await ChangeStartVideoKeyboardButton({
+                lang,
+                i18n,
+              })),
+            ],
+          ],
+        }),
+        inline_keyboard: [
+          await PickDateLinkInlineButton({
+            lang,
+            i18n,
+          }),
+        ],
+      },
+    },
+  );
 };

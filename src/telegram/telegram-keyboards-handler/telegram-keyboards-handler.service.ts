@@ -3,6 +3,7 @@ import { I18nService } from 'nestjs-i18n';
 import { ITelegramBodyWithMessage } from '../../common/interfaces/telegram.interface';
 import { TelegramAdminWelcomeMessageActionService } from '../telegram-admin-welcome-message-action/telegram-admin-welcome-message-action.service';
 import { TelegramMailingActionService } from '../telegram-mailing-action/telegram-mailing-action.service';
+import { TelegramAnalyticsActionService } from '../telegram-analytics-action/telegram-analytics-action.service';
 
 @Injectable()
 export class TelegramKeyboardsHandlerService {
@@ -10,6 +11,7 @@ export class TelegramKeyboardsHandlerService {
     private readonly i18n: I18nService,
     private readonly telegramAdminWelcomeMessageAction: TelegramAdminWelcomeMessageActionService,
     private readonly telegramMailingAction: TelegramMailingActionService,
+    private readonly telegramAnalyticsAction: TelegramAnalyticsActionService,
   ) {}
 
   async actionHandler({ message, ctx }: ITelegramBodyWithMessage) {
@@ -40,6 +42,12 @@ export class TelegramKeyboardsHandlerService {
         message,
       });
     }
+    if (session.enableChoosingPeriod) {
+      return await this.telegramAnalyticsAction.getAnalyticsByPeriod({
+        ctx,
+        message,
+      });
+    }
     if (getKey === 'MAILING') {
       return await this.telegramMailingAction.enableMailing({ ctx });
     }
@@ -60,6 +68,19 @@ export class TelegramKeyboardsHandlerService {
     }
     if (getKey === 'DELETE_VIDEOS') {
       return await this.telegramAdminWelcomeMessageAction.getDeleteVideoList({
+        ctx,
+      });
+    }
+    if (getKey === 'ANALYTICS') {
+      return await this.telegramAnalyticsAction.getAnalyticsMenu({ ctx });
+    }
+    if (getKey === 'CURRENT_DAY_ANALYTICS') {
+      return await this.telegramAnalyticsAction.getAnalyticsByCurrentDay({
+        ctx,
+      });
+    }
+    if (getKey === 'CHOOSE_PERIOD_ANALYTICS') {
+      return await this.telegramAnalyticsAction.enableGetAnalyticsByPeriod({
         ctx,
       });
     }
