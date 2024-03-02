@@ -48,7 +48,7 @@ export const WelcomeAction = async ({
           'presentation.pdf',
         ),
       ),
-      filename: 'Як виглядає 3D візуалізація плану лікування?.pdf',
+      filename: '3D план лікування.pdf',
     },
     {
       caption: text,
